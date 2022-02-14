@@ -1,9 +1,10 @@
 import _DictionarySearch from './components/DictionarySearch';
-import { GutenbergBookSearch } from './components/GutenbergBookSearch';
+import _GutenbergBookSearch from './components/GutenbergBookSearch';
 import './App.scss';
 import { dataManager } from './hoc/dataManager';
 
 const DictionarySearch = dataManager(_DictionarySearch);
+const GutenbergBookSearch = dataManager(_GutenbergBookSearch);
 
 function App() {
 

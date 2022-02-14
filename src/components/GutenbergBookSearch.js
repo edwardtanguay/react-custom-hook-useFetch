@@ -1,14 +1,12 @@
 import { useEffect, useState } from 'react';
 
-export const GutenbergBookSearch = () => {
+const GutenbergBookSearch = ({fetchData}) => {
 	const [booksArray, setBooksArray] = useState([]);
 	const [searchText, setSearchText] = useState('nnn');
 
 	const lookupText = (text) => {
-		const url = `https://gutendex.com/books/?search=${text}`;
 		(async () => {
-			const response = await fetch(url);
-			const data = await response.json();
+			const data = await fetchData(`https://gutendex.com/books/?search=${text}`);
 			setBooksArray([...data.results]);
 		})();
 	}
@@ -38,3 +36,5 @@ export const GutenbergBookSearch = () => {
 		</div>
 	)
 }
+
+export default GutenbergBookSearch;
