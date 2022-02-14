@@ -5,16 +5,18 @@ export const GutenbergBookSearch = () => {
 	const [searchText, setSearchText] = useState('nnn');
 
 	const lookupText = (text) => {
-		const url2 = `https://gutendex.com/books/?search=${text}`;
+		const url = `https://gutendex.com/books/?search=${text}`;
 		(async () => {
-			const response = await fetch(url2);
+			const response = await fetch(url);
 			const data = await response.json();
 			setBooksArray([...data.results]);
 		})();
 	}
 
 	useEffect(() => {
-		lookupText('lewis');
+		const _searchText = 'ocean';
+		setSearchText(_searchText);
+		lookupText(_searchText);
 	}, []);
 
 	const handleSearchTextClick = (e) => {
