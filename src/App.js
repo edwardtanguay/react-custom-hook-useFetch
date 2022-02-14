@@ -6,13 +6,21 @@ function App() {
 
 	useEffect(() => {
 		const url = 'https://api.dictionaryapi.dev/api/v2/entries/en/response';
-		console.log(url);
 		(async () => {
 			const response = await fetch(url);
 			const data = await response.json();
 			setWordObject(data[0]);
 			console.log(data[0]);
 		})();
+
+		const url2 = 'https://gutendex.com/books/?search=awakening';
+		(async () => {
+			const response = await fetch(url2);
+			const data = await response.json();
+			console.log(data);
+		})();
+
+
 	}, []);
 
 	return (
@@ -25,7 +33,7 @@ function App() {
 					</div>
 					<ul>
 						<li>
-							<div className="definition">{wordObject.meanings[0].definitions[0].definition.slice(0,-1)}</div>
+							<div className="definition">{wordObject.meanings[0].definitions[0].definition.slice(0, -1)}</div>
 							<div className="example">"{wordObject.meanings[0].definitions[0].example}"</div>
 						</li>
 					</ul>
