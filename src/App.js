@@ -1,44 +1,32 @@
 import { useEffect, useState } from 'react';
+import { DictionarySearch } from './components/DictionarySearch';
 import './App.scss';
 
 function App() {
-	const [wordObject, setWordObject] = useState([]);
+	const [booksArray, setBooksArray] = useState([]);
 
 	useEffect(() => {
-		const url = 'https://api.dictionaryapi.dev/api/v2/entries/en/response';
-		(async () => {
-			const response = await fetch(url);
-			const data = await response.json();
-			setWordObject(data[0]);
-			console.log(data[0]);
-		})();
-
-		const url2 = 'https://gutendex.com/books/?search=awakening';
+		const url2 = 'https://gutendex.com/books/?search=colorado';
 		(async () => {
 			const response = await fetch(url2);
 			const data = await response.json();
 			console.log(data);
+			setBooksArray([...data.results]);
 		})();
-
-
 	}, []);
 
 	return (
 		<div className="App">
-			<h1>Dictionary</h1>
-			{wordObject.word && (
-				<div className="wordArea">
-					<div className="wordInfo">
-						<span className="word">{wordObject.word}</span> <span className="partOfSpeech">({wordObject.meanings[0].partOfSpeech})</span>
-					</div>
-					<ul>
-						<li>
-							<div className="definition">{wordObject.meanings[0].definitions[0].definition.slice(0, -1)}</div>
-							<div className="example">"{wordObject.meanings[0].definitions[0].example}"</div>
-						</li>
-					</ul>
-				</div>
-			)}
+			<DictionarySearch/>
+
+			<h2>Gutenberg Books</h2>
+			<ul>
+				{booksArray.map((book, i) => {
+					return (
+						<li key={i}><a target="_blank" href={book.formats['text/html']} rel="noreferrer">{book.title}</a> - {book.authors[0].name}</li>
+					)
+				})}
+			</ul>
 		</div>
 	);
 }
