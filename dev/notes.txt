@@ -4,7 +4,7 @@
 - x make dictionary search
 - x make gutenberg search
 - x restyle
-- .. useFetch
+- .. useFetch--> switch to higher-order components
 - focus 
 - filter
 

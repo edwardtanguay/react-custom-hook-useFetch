@@ -1,15 +1,12 @@
 import { useEffect, useState } from 'react';
 
-export const DictionarySearch = () => {
-
+const DictionarySearch = ({ fetchData }) => {
 	const [searchWord, setSearchWord] = useState('');
 	const [wordObject, setWordObject] = useState([]);
 
 	const lookupWord = (word) => {
-		const url = `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`;
 		(async () => {
-			const response = await fetch(url);
-			const data = await response.json();
+			const data = await fetchData(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`);
 			setWordObject(data[0]);
 		})();
 	}
@@ -45,3 +42,5 @@ export const DictionarySearch = () => {
 		</div>
 	)
 }
+
+export default DictionarySearch;
