@@ -11,6 +11,7 @@
 
 
 - resources
+	- 
 	- https://api.dictionaryapi.dev/api/v2/entries/en/definition
 	- https://github.com/public-apis/public-apis 
 	- https://rapidapi.com/rokish/api/lingua-robot/details didn't work 403 forbidden after signing up
