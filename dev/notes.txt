@@ -4,9 +4,9 @@
 - x make dictionary search
 - x make gutenberg search
 - x restyle
-- .. useFetch--> switch to higher-order components
+- x useFetch--> switch to higher-order components
 - focus 
-- filter
+- build schema
 
 
 
