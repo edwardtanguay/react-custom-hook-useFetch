@@ -4,7 +4,7 @@ export const GutenbergBookSearch = () => {
 	const [booksArray, setBooksArray] = useState([]);
 
 	useEffect(() => {
-		const url2 = 'https://gutendex.com/books/?search=colorado';
+		const url2 = 'https://gutendex.com/books/?search=palmer';
 		(async () => {
 			const response = await fetch(url2);
 			const data = await response.json();

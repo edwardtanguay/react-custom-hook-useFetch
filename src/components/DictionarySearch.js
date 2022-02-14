@@ -1,20 +1,30 @@
 import { useEffect, useState } from 'react';
 
 export const DictionarySearch = () => {
+	
+	const [searchWord, setSearchWord] = useState('');
 	const [wordObject, setWordObject] = useState([]);
 
-	useEffect(() => {
-		const url = 'https://api.dictionaryapi.dev/api/v2/entries/en/response';
+	const lookupWord = (word) => {
+		const url = `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`;
 		(async () => {
 			const response = await fetch(url);
 			const data = await response.json();
 			setWordObject(data[0]);
 		})();
+	}
+
+	useEffect(() => {
+		lookupWord('ocean');
 	}, []);
+
+	const handleSearchWordClick = (e) => {
+		console.log(searchWord);
+	}
 
 	return (
 		<>
-			<h2>Dictionary</h2>
+			<h2>Dictionary: <input type="text" value={searchWord} onChange={e => setSearchWord(e.target.value)} /> <button onClick={(e) => handleSearchWordClick(e)} >Search</button></h2>
 			{wordObject.word && (
 				<div className="wordArea">
 					<div className="wordInfo">
