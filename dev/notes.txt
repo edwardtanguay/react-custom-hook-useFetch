@@ -1,5 +1,6 @@
 - x show rest of word info
 - x make second component
+import { useEffect, useState } from 'react';
 - make two components: DictionarySearch, GutenbergBookSearch
 
 
