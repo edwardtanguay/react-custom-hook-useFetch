@@ -19,7 +19,7 @@ export const DictionarySearch = () => {
 	}, []);
 
 	const handleSearchWordClick = (e) => {
-		console.log(searchWord);
+		lookupWord(searchWord);
 	}
 
 	return (
