@@ -24,15 +24,17 @@ export const GutenbergBookSearch = () => {
 	}
 
 	return (
-		<>
+		<div className="component gutenbergComponent">
 			<h2>Gutenberg Books: <input type="text" value={searchText} onChange={e => setSearchText(e.target.value)} /> <button onClick={(e) => handleSearchTextClick(e)} >Search</button></h2>
-			<ul>
-				{booksArray.map((book, i) => {
-					return (
-						<li key={i}><a target="_blank" href={book.formats['text/html']} rel="noreferrer">{book.title}</a> - {book.authors[0].name}</li>
-					)
-				})}
-			</ul>
-		</>
+			<div className="content">
+				<ul>
+					{booksArray.map((book, i) => {
+						return (
+							<li key={i}><a target="_blank" href={book.formats['text/html']} rel="noreferrer">{book.title}</a> - {book.authors[0].name}</li>
+						)
+					})}
+				</ul>
+			</div>
+		</div>
 	)
 }

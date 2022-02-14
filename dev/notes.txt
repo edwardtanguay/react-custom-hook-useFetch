@@ -2,7 +2,11 @@
 - x make second component
 - x make two components: DictionarySearch, GutenbergBookSearch
 - x make dictionary search
-- .. make gutenberg search
+- x make gutenberg search
+- x restyle
+- .. useFetch
+- focus 
+- filter
 
 
 
