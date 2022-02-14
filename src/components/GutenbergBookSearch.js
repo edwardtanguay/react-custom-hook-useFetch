@@ -2,21 +2,28 @@ import { useEffect, useState } from 'react';
 
 export const GutenbergBookSearch = () => {
 	const [booksArray, setBooksArray] = useState([]);
+	const [searchText, setSearchText] = useState('nnn');
 
-	useEffect(() => {
-		const url2 = 'https://gutendex.com/books/?search=palmer';
+	const lookupText = (text) => {
+		const url2 = `https://gutendex.com/books/?search=${text}`;
 		(async () => {
 			const response = await fetch(url2);
 			const data = await response.json();
-			console.log(data);
 			setBooksArray([...data.results]);
 		})();
+	}
+
+	useEffect(() => {
+		lookupText('lewis');
 	}, []);
 
+	const handleSearchTextClick = (e) => {
+		lookupText(searchText);
+	}
 
 	return (
 		<>
-			<h2>Gutenberg Books</h2>
+			<h2>Gutenberg Books: <input type="text" value={searchText} onChange={e => setSearchText(e.target.value)} /> <button onClick={(e) => handleSearchTextClick(e)} >Search</button></h2>
 			<ul>
 				{booksArray.map((book, i) => {
 					return (

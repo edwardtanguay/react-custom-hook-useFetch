@@ -1,8 +1,8 @@
 - x show rest of word info
 - x make second component
 - x make two components: DictionarySearch, GutenbergBookSearch
-- .. make dictionary search
-- make gutenberg search
+- x make dictionary search
+- .. make gutenberg search
 
 
 

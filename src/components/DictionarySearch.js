@@ -15,7 +15,9 @@ export const DictionarySearch = () => {
 	}
 
 	useEffect(() => {
-		lookupWord('ocean');
+		const _searchWord = 'steel';
+		setSearchWord(_searchWord);
+		lookupWord(_searchWord);
 	}, []);
 
 	const handleSearchWordClick = (e) => {
