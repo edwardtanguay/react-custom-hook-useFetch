@@ -5,8 +5,12 @@
 - x make gutenberg search
 - x restyle
 - x useFetch--> switch to higher-order components
-- focus 
-- build schema
+- x focus 
+- .. spinners
+	- x show word first
+	- x use react-icons
+- switch to raw/normal items
+	- filter
 
 
 

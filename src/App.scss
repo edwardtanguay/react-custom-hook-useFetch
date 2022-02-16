@@ -20,6 +20,21 @@ body {
 		margin: 0 0 0 30px;
 	}
 
+	.spinner {
+		animation: spin infinite 2s linear;
+		font-size: 4rem;
+		color: #555;
+	}
+
+	@keyframes spin {
+		from {
+			transform: rotate(0deg);
+		}
+		to {
+			transform: rotate(360deg);
+		}
+	}
+
 	.component {
 		h2 {
 			font-size: 2rem;
@@ -43,7 +58,7 @@ body {
 
 	.gutenbergComponent {
 		a {
-			color:rgb(184, 147, 63);
+			color: rgb(184, 147, 63);
 		}
 	}
 

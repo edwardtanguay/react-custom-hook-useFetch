@@ -25,6 +25,21 @@ body {
   margin: 0 0 0 30px;
 }
 
+.App .spinner {
+  animation: spin infinite 2s linear;
+  font-size: 4rem;
+  color: #555;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .App .component h2 {
   font-size: 2rem;
   color: #bbb;

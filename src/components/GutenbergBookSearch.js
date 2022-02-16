@@ -1,14 +1,17 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
+import { FaSpinner } from 'react-icons/fa';
 
-const GutenbergBookSearch = ({fetchData}) => {
+const GutenbergBookSearch = ({ fetchData }) => {
 	const [booksArray, setBooksArray] = useState([]);
-	const [searchText, setSearchText] = useState('nnn');
+	const [searchText, setSearchText] = useState('');
 
 	const lookupText = (text) => {
-		(async () => {
+		setBooksArray([]);
+		setTimeout(async () => {
 			const data = await fetchData(`https://gutendex.com/books/?search=${text}`);
 			setBooksArray([...data.results]);
-		})();
+		}, 1000);
 	}
 
 	useEffect(() => {
@@ -25,13 +28,18 @@ const GutenbergBookSearch = ({fetchData}) => {
 		<div className="component gutenbergComponent">
 			<h2>Gutenberg Books: <input type="text" value={searchText} onChange={e => setSearchText(e.target.value)} /> <button onClick={(e) => handleSearchTextClick(e)} >Search</button></h2>
 			<div className="content">
-				<ul>
-					{booksArray.map((book, i) => {
-						return (
-							<li key={i}><a target="_blank" href={book.formats['text/html']} rel="noreferrer">{book.title}</a> - {book.authors[0].name}</li>
-						)
-					})}
-				</ul>
+				{booksArray.length === 0 && (
+					<div><FaSpinner className="spinner"/></div>
+				)}
+				{booksArray.length > 1 && (
+					<ul>
+						{booksArray.map((book, i) => {
+							return (
+								<li key={i}><a target="_blank" href={book.formats['text/html']} rel="noreferrer">{book.title}</a> - {book.authors[0].name}</li>
+							)
+						})}
+					</ul>
+				)}
 			</div>
 		</div>
 	)

@@ -1,14 +1,17 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
+import { FaSpinner } from 'react-icons/fa';
 
 const DictionarySearch = ({ fetchData }) => {
 	const [searchWord, setSearchWord] = useState('');
-	const [wordObject, setWordObject] = useState([]);
+	const [wordObject, setWordObject] = useState({});
 
 	const lookupWord = (word) => {
-		(async () => {
+		setWordObject({});
+		setTimeout(async () => {
 			const data = await fetchData(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`);
 			setWordObject(data[0]);
-		})();
+		}, 1000);
 	}
 
 	useEffect(() => {
@@ -23,9 +26,12 @@ const DictionarySearch = ({ fetchData }) => {
 
 	return (
 		<div className="component">
-			<h2>Dictionary: <input type="text" value={searchWord} onChange={e => setSearchWord(e.target.value)} /> <button onClick={(e) => handleSearchWordClick(e)} >Search</button></h2>
+			<h2>Dictionary: <input autoFocus type="text" value={searchWord} onChange={e => setSearchWord(e.target.value)} /> <button onClick={(e) => handleSearchWordClick(e)} >Search</button></h2>
 			<div className="content">
-				{wordObject.word && (
+				{Object.entries(wordObject).length === 0 && (
+					<div><FaSpinner className="spinner"/></div>
+				)}
+				{Object.entries(wordObject).length > 0 && (
 					<div className="wordArea">
 						<div className="wordInfo">
 							<span className="word">{wordObject.word}</span> <span className="partOfSpeech">({wordObject.meanings[0].partOfSpeech})</span>
